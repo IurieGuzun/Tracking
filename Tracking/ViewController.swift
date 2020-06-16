@@ -22,12 +22,24 @@ class ViewController: UIViewController {
     }
 
     @IBAction func add(_ sender: Any) {
-        let node = SCNNode()
-        node.geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.02)
-        node.geometry?.firstMaterial?.diffuse.contents = UIColor.green
-        node.position = SCNVector3(0,0,-0.3)
-        self.sceneView.scene.rootNode.addChildNode(node)
+        let pyramid = SCNNode(geometry: SCNPyramid(width: 0.1, height: 0.1, length: 0.1))
+        pyramid.geometry?.firstMaterial?.diffuse.contents = UIColor.green
+        pyramid.position = SCNVector3(0, 0, -0.3)
+        pyramid.eulerAngles = SCNVector3(Float(180.degreeToRadians), 0, 0)
+        self.sceneView.scene.rootNode.addChildNode(pyramid)
+        
+        
+//        let node = SCNNode()
+//        node.geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.02)
+//        node.geometry?.firstMaterial?.diffuse.contents = UIColor.green
+//        node.position = SCNVector3(0,0,-0.3)
+//        self.sceneView.scene.rootNode.addChildNode(node)
     }
     
 }
 
+extension Int {
+    var degreeToRadians: Double {
+        return Double(self) * .pi/180
+    }
+}
