@@ -22,11 +22,23 @@ class ViewController: UIViewController {
     }
 
     @IBAction func add(_ sender: Any) {
-        let node = SCNNode(geometry: SCNPlane(width: 0.3, height: 0.3))
-        node.geometry?.firstMaterial?.diffuse.contents = UIColor.green
-        node.position = SCNVector3(0, 0, 0)
-        node.eulerAngles = SCNVector3(0,90.degreeToRadians, 0)
-        self.sceneView.scene.rootNode.addChildNode(node)
+        
+        let cylinder = SCNNode(geometry: SCNCylinder(radius: 0.1, height: 0.1))
+        cylinder.geometry?.firstMaterial?.diffuse.contents = UIColor.green
+        cylinder.position = SCNVector3(0, 0, -0.3)
+   //     cylinder.eulerAngles = SCNVector3(0,0,90.degreeToRadians)
+        self.sceneView.scene.rootNode.addChildNode(cylinder)
+
+        let pyramid = SCNNode(geometry: SCNPyramid(width: 0.1, height: 0.1, length: 0.1))
+        pyramid.geometry?.firstMaterial?.diffuse.contents = UIColor.orange
+        pyramid.position = SCNVector3(0, 0, -0.5)
+        cylinder.addChildNode(pyramid)
+        
+//        let node = SCNNode(geometry: SCNPlane(width: 0.3, height: 0.3))
+//        node.geometry?.firstMaterial?.diffuse.contents = UIColor.green
+//        node.position = SCNVector3(0, 0, 0)
+//        node.eulerAngles = SCNVector3(0,90.degreeToRadians, 0)
+//        self.sceneView.scene.rootNode.addChildNode(node)
         
         
         
