@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         let node = SCNNode()
         node.geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.02)
         node.geometry?.firstMaterial?.diffuse.contents = UIColor.green
+        node.position = SCNVector3(0,0,-0.3)
         self.sceneView.scene.rootNode.addChildNode(node)
     }
     
